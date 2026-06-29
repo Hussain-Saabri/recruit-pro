@@ -27,10 +27,10 @@ function AppLayout() {
   }
 
   return (
-    <div className="w-full min-h-screen bg-[#F8FAFC] flex flex-col">
+    <div className="w-full min-h-screen bg-white flex flex-col">
       <Navbar />
     
-      <main className="flex-1 p-4 md:p-6 max-w-[1200px] w-full mx-auto box-border">
+      <main className="flex-1 p-4 md:p-6 w-full box-border">
       <Outlet />
       </main>
     </div>

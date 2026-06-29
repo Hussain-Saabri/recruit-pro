@@ -9,7 +9,7 @@ import { Rocket, Menu } from "lucide-react";
 export default function Navbar() {
   const { user, logout } = useAuthStore();
   const navItems = useRoleNavigation();
-  console.log("navItems",navItems);
+  console.log("navItems", navItems);
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -28,11 +28,10 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`sticky top-0 z-40 w-full h-[72px] flex items-center justify-between px-4 md:px-6 transition-all duration-300 font-sans ${
-          scrolled
+        className={`sticky top-0 z-40 w-full h-[72px] flex items-center justify-between px-4 md:px-6 transition-all duration-300 font-sans ${scrolled
             ? "bg-white/85 backdrop-blur-md border-b border-slate-200/50 shadow-[0_4px_30px_rgba(0,0,0,0.02)]"
             : "bg-white border-b border-slate-100"
-        }`}
+          }`}
       >
         {/* Left Section: Logo & Hamburger */}
         <div className="flex items-center gap-2 md:gap-3">
