@@ -1,9 +1,16 @@
-import React, { useState } from 'react'
-import { ThemeProvider, createTheme } from '@mui/material/styles'
-import Login from './pages/auth/Login'
-import Dashboard from './pages/dashboard/Dashboard'
-import './App.css'
-import { Toaster, toast } from 'sonner'
+
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { useAuthStore } from "./store/useAuthStore";
+import Login from "./pages/auth/Login";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Manage from "./pages/dashboard/Manage";
+import Users from "./pages/dashboard/Users";
+import Jds from "./pages/dashboard/Jds";
+import AddJd from "./pages/dashboard/AddJd";
+import Navbar from "./components/layout/Navbar";
+import { Toaster } from "sonner";
+import "./App.css";
 
 const theme = createTheme({
   typography: {
@@ -11,31 +18,51 @@ const theme = createTheme({
   },
 });
 
+// Layout wrapper for authenticated users
+function AppLayout() {
+  const { user } = useAuthStore();
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return (
+    <div className="w-full min-h-screen bg-[#F8FAFC] flex flex-col">
+      <Navbar />
+    
+      <main className="flex-1 p-4 md:p-6 max-w-[1200px] w-full mx-auto box-border">
+      <Outlet />
+      </main>
+    </div>
+  );
+}
+
+
+
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
-
-  const handleLoginSuccess = (user) => {
-    setCurrentUser(user);
-    setIsLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setCurrentUser(null);
-    toast("Logged out successfully.");
-  };
-
   return (
     <ThemeProvider theme={theme}>
       <Toaster richColors position="top-right" closeButton />
-      {isLoggedIn ? (
-        <Dashboard user={currentUser} onLogout={handleLogout} />
-      ) : (
-        <Login onLoginSuccess={handleLoginSuccess} />
-      )}
+      <BrowserRouter>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/login" element={<Login />} />
+
+          {/* Authenticated Layout Routes */}
+          <Route element={<AppLayout />}>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/manage" element={<Manage />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/jds" element={<Jds />} />
+            <Route path="/add" element={<AddJd />} />
+          </Route>
+
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
-  )
+  );
 }
 
-export default App
+export default App;
