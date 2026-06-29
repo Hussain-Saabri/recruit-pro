@@ -21,7 +21,12 @@ import {
   UsersIcon,
 } from "../../lib/icons";
 import { toast } from 'sonner'
-export default function LoginComponent({ onLoginSuccess = () => {} }) {
+import { useAuthStore } from "../../store/useAuthStore";
+import { useNavigate } from "react-router-dom";
+
+export default function LoginComponent() {
+  const { login } = useAuthStore();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -74,18 +79,11 @@ export default function LoginComponent({ onLoginSuccess = () => {} }) {
       setIsLoading(false);
       toast("Sign in successful! Welcome to RecruitPro.");
       
-      const emailPrefix = email.split('@')[0];
-      const displayName = emailPrefix.split('.').map(n => n.charAt(0).toUpperCase() + n.slice(1)).join(' ');
-      const initials = emailPrefix.split('.').map(n => n.charAt(0).toUpperCase()).join('').substring(0, 2) || "US";
-      const userRole = email.includes("admin") ? "Admin" : email.includes("leader") ? "Team Leader" : email.includes("recruiter") ? "Recruiter" : "Account Manager";
+      login(email);
 
       setTimeout(() => {
-        onLoginSuccess({
-          name: displayName,
-          role: userRole,
-          initials: initials,
-        });
-      }, 800);
+        navigate("/dashboard");
+      }, 500);
     }, 1500);
   };
 
