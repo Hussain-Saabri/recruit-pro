@@ -14,29 +14,33 @@ export default function Cards({
       iconBg: "bg-brand-500",
       iconShadow: "shadow-brand-500/10",
       valueColor: "text-brand-500",
-      hover: "hover:shadow-[0_8px_30px_rgba(109,93,246,0.05)] hover:border-brand-200/50 active:border-brand-200/50 active:shadow-[0_8px_30px_rgba(109,93,246,0.05)]",
-      hoverTopBar: "group-hover:bg-brand-500 group-active:bg-brand-500"
+      hover: "hover:shadow-[0_8px_30px_rgba(109,93,246,0.05)] hover:border-[#6D5DF6]/50 active:border-[#6D5DF6]/50",
+      topBarColor: "bg-[#6D5DF6]",
+      bgGradient: "from-[#F5F4FF]/70"
     },
     green: {
       iconBg: "bg-emerald-500",
       iconShadow: "shadow-emerald-500/10",
       valueColor: "text-emerald-500",
-      hover: "hover:shadow-[0_8px_30px_rgba(16,185,129,0.05)] hover:border-emerald-200/50 active:border-emerald-200/50 active:shadow-[0_8px_30px_rgba(16,185,129,0.05)]",
-      hoverTopBar: "group-hover:bg-emerald-500 group-active:bg-emerald-500"
+      hover: "hover:shadow-[0_8px_30px_rgba(16,185,129,0.05)] hover:border-[#10B981]/50 active:border-[#10B981]/50",
+      topBarColor: "bg-[#10B981]",
+      bgGradient: "from-[#ECFDF5]/70"
     },
     orange: {
       iconBg: "bg-amber-500",
       iconShadow: "shadow-amber-500/10",
       valueColor: "text-amber-500",
-      hover: "hover:shadow-[0_8px_30px_rgba(245,158,11,0.05)] hover:border-amber-200/50 active:border-amber-200/50 active:shadow-[0_8px_30px_rgba(245,158,11,0.05)]",
-      hoverTopBar: "group-hover:bg-amber-500 group-active:bg-amber-500"
+      hover: "hover:shadow-[0_8px_30px_rgba(245,158,11,0.05)] hover:border-[#F59E0B]/50 active:border-[#F59E0B]/50",
+      topBarColor: "bg-[#F59E0B]",
+      bgGradient: "from-[#FFFBEB]/70"
     },
     blue: {
       iconBg: "bg-blue-500",
       iconShadow: "shadow-blue-500/10",
       valueColor: "text-blue-500",
-      hover: "hover:shadow-[0_8px_30px_rgba(59,130,246,0.05)] hover:border-blue-200/50 active:border-blue-200/50 active:shadow-[0_8px_30px_rgba(59,130,246,0.05)]",
-      hoverTopBar: "group-hover:bg-blue-500 group-active:bg-blue-500"
+      hover: "hover:shadow-[0_8px_30px_rgba(59,130,246,0.05)] hover:border-[#3B82F6]/50 active:border-[#3B82F6]/50",
+      topBarColor: "bg-[#3B82F6]",
+      bgGradient: "from-[#EFF6FF]/70"
     }
   };
 
@@ -44,9 +48,7 @@ export default function Cards({
 
   return (
 
-    <div className={` group relative overflow-hidden bg-gradient-to-r from-sky-50/70 via-white to-white p-4 rounded-[8px] border border-gray-300 shadow-[0_4px_20px_rgba(0,0,0,0.015)] flex items-start gap-3 transition-all duration-300 hover:scale-[1.02] active:scale-[1.02] cursor-pointer ${style.hover}`}>
-      {/* Top Border Line Hover Highlight */}
-      <div className={`absolute top-0 left-0 right-0 h-[4px] bg-transparent transition-colors duration-300 ${style.hoverTopBar}`} />
+    <div className={` group relative overflow-hidden bg-gradient-to-r ${style.bgGradient} via-white to-white p-4 rounded-[8px] border border-gray-300 shadow-[0_4px_20px_rgba(0,0,0,0.015)] flex items-start gap-3 transition-all duration-300 hover:scale-[1.02] active:scale-[1.02] cursor-pointer ${style.hover}`}>
       
       {/* Icon size changed to w-12 h-12 and rounded-lg to match target project sizes */}
       <div className={`w-10 h-10 ${style.iconBg} ${style.iconShadow} rounded-lg flex items-center justify-center text-white shrink-0`}>

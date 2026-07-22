@@ -24,6 +24,8 @@ import { toast } from 'sonner'
 import { useAuthStore } from "../../store/useAuthStore";
 import { useNavigate } from "react-router-dom";
 
+
+
 export default function LoginComponent() {
   const { login } = useAuthStore();
   const navigate = useNavigate();
@@ -135,13 +137,14 @@ export default function LoginComponent() {
           </Box>
 
           {/* Heading */}
-          <Box sx={{ textAlign: "center", marginBottom: "32px" }}>
+          <Box sx={{ textAlign: "center", marginBottom: "24px" }}>
             <Typography
-              variant="h5"
+              variant="h6"
               sx={{
                 fontWeight: 700,
                 color: "#1E293B",
-                marginBottom: "8px",
+                fontSize: "20px",
+                marginBottom: "4px",
                 letterSpacing: "-0.5px",
               }}
             >
@@ -151,7 +154,8 @@ export default function LoginComponent() {
               variant="body2"
               sx={{
                 color: "#64748B",
-                lineHeight: 1.5,
+                lineHeight: 1.4,
+                fontSize: "13px",
               }}
             >
               Sign in to access detailed insights into your operational workflow.
@@ -161,24 +165,24 @@ export default function LoginComponent() {
           {/* Form */}
           <Box component="form" onSubmit={handleSubmit}>
             {/* Email Field */}
-            <Box sx={{ marginBottom: "24px" }}>
+            <Box sx={{ marginBottom: "16px" }}>
               <Box
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "8px",
+                  gap: "6px",
                   color: "#475569",
-                  marginBottom: "8px",
+                  marginBottom: "6px",
                 }}
               >
                 <Box sx={{ color: "#2563EB", display: "flex" }}>
-                  <EmailIcon size={18} strokeWidth={2} />
+                  <EmailIcon size={16} strokeWidth={2} />
                 </Box>
                 <Typography
                   variant="body2"
                   sx={{
                     fontWeight: 600,
-                    fontSize: "14px",
+                    fontSize: "13px",
                   }}
                 >
                   Email
@@ -186,13 +190,15 @@ export default function LoginComponent() {
               </Box>
               <OutlinedInput
                 fullWidth
+                size="small"
                 type="email"
                 placeholder="admin@company.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 sx={{
-                  borderRadius: "12px",
+                  borderRadius: "10px",
                   backgroundColor: "#FAFAFA",
+                  height: "44px",
                   "& .MuiOutlinedInput-notchedOutline": {
                     borderColor: "#E2E8F0",
                   },
@@ -211,24 +217,24 @@ export default function LoginComponent() {
             </Box>
 
             {/* Password Field */}
-            <Box sx={{ marginBottom: "24px" }}>
+            <Box sx={{ marginBottom: "20px" }}>
               <Box
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "8px",
+                  gap: "6px",
                   color: "#475569",
-                  marginBottom: "8px",
+                  marginBottom: "6px",
                 }}
               >
                 <Box sx={{ color: "#2563EB", display: "flex" }}>
-                  <LockIcon size={18} strokeWidth={2} />
+                  <LockIcon size={16} strokeWidth={2} />
                 </Box>
                 <Typography
                   variant="body2"
                   sx={{
                     fontWeight: 600,
-                    fontSize: "14px",
+                    fontSize: "13px",
                   }}
                 >
                   Password
@@ -236,6 +242,7 @@ export default function LoginComponent() {
               </Box>
               <OutlinedInput
                 fullWidth
+                size="small"
                 type={showPassword ? "text" : "password"}
                 placeholder="••••••••••••"
                 value={password}
@@ -245,19 +252,20 @@ export default function LoginComponent() {
                     <IconButton
                       onClick={handleTogglePassword}
                       edge="end"
-                      sx={{ color: "#64748B" }}
+                      sx={{ color: "#64748B", padding: "4px" }}
                     >
                       {showPassword ? (
-                        <EyeOffIcon size={20} strokeWidth={2} />
+                        <EyeOffIcon size={18} strokeWidth={2} />
                       ) : (
-                        <EyeIcon size={20} strokeWidth={2} />
+                        <EyeIcon size={18} strokeWidth={2} />
                       )}
                     </IconButton>
                   </InputAdornment>
                 }
                 sx={{
-                  borderRadius: "12px",
+                  borderRadius: "10px",
                   backgroundColor: "#FAFAFA",
+                  height: "44px",
                   "& .MuiOutlinedInput-notchedOutline": {
                     borderColor: "#E2E8F0",
                   },
@@ -278,10 +286,10 @@ export default function LoginComponent() {
             {/* Sign In Button */}
             <Button
               type="submit"
-              variant="primary"
+              variant="default"
               disabled={isLoading}
               isLoading={isLoading}
-              className="w-full h-[52px] rounded-xl text-base font-semibold shadow-md shadow-brand-500/10 hover:shadow-lg hover:shadow-brand-500/20 mb-8"
+              className="w-full h-[52px] rounded-xl text-base font-semibold shadow-md shadow-[#7C4DFF]/20 hover:shadow-lg hover:shadow-[#7C4DFF]/40 mb-8 bg-[#7C4DFF] hover:bg-[#651FFF] text-white border-none"
               leftIcon={<SignInIcon size={18} strokeWidth={2} />}
             >
               Sign In
@@ -294,7 +302,7 @@ export default function LoginComponent() {
               backgroundColor: "#FAF9FF",
               border: "1px solid #ECE9FF",
               borderRadius: "18px",
-              padding: "20px",
+              padding: "16px",
             }}
           >
             <Box
@@ -303,22 +311,22 @@ export default function LoginComponent() {
                 alignItems: "center",
                 gap: "8px",
                 color: "#7C4DFF",
-                marginBottom: "16px",
+                marginBottom: "12px",
               }}
             >
-              <InfoIcon size={18} strokeWidth={2} />
+              <InfoIcon size={16} strokeWidth={2} />
               <Typography
                 variant="body2"
                 sx={{
                   fontWeight: 600,
-                  fontSize: "14px",
+                  fontSize: "13px",
                 }}
               >
-                Demo Access
+                Quick Demo Access
               </Typography>
             </Box>
 
-            <Box sx={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
               {/* Super Admin */}
               <Box
                 component="button"
@@ -327,28 +335,25 @@ export default function LoginComponent() {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "12px",
+                  justifyContent: "center",
+                  gap: "6px",
                   width: "100%",
                   backgroundColor: "#FFFFFF",
                   border: "1px solid #E2E8F0",
-                  borderRadius: "12px",
-                  padding: "12px 16px",
-                  textAlign: "left",
+                  borderRadius: "10px",
+                  padding: "8px",
                   cursor: "pointer",
                   transition: "all 0.2s ease-in-out",
                   color: "#334155",
-                  fontSize: "14px",
-                  fontWeight: 500,
+                  fontSize: "12px",
+                  fontWeight: 600,
                   "&:hover": {
                     borderColor: "#7C4DFF",
                     backgroundColor: "#FAF5FF",
-                    transform: "translateX(4px)",
+                    color: "#7C4DFF",
                   },
                 }}
               >
-                <Box sx={{ color: "#7C4DFF", display: "flex" }}>
-                  <UserIcon size={18} strokeWidth={2} />
-                </Box>
                 Super Admin
               </Box>
 
@@ -360,28 +365,25 @@ export default function LoginComponent() {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "12px",
+                  justifyContent: "center",
+                  gap: "6px",
                   width: "100%",
                   backgroundColor: "#FFFFFF",
                   border: "1px solid #E2E8F0",
-                  borderRadius: "12px",
-                  padding: "12px 16px",
-                  textAlign: "left",
+                  borderRadius: "10px",
+                  padding: "8px",
                   cursor: "pointer",
                   transition: "all 0.2s ease-in-out",
                   color: "#334155",
-                  fontSize: "14px",
-                  fontWeight: 500,
+                  fontSize: "12px",
+                  fontWeight: 600,
                   "&:hover": {
                     borderColor: "#7C4DFF",
                     backgroundColor: "#FAF5FF",
-                    transform: "translateX(4px)",
+                    color: "#7C4DFF",
                   },
                 }}
               >
-                <Box sx={{ color: "#7C4DFF", display: "flex" }}>
-                  <UserIcon size={18} strokeWidth={2} />
-                </Box>
                 Admin
               </Box>
 
@@ -393,28 +395,25 @@ export default function LoginComponent() {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "12px",
+                  justifyContent: "center",
+                  gap: "6px",
                   width: "100%",
                   backgroundColor: "#FFFFFF",
                   border: "1px solid #E2E8F0",
-                  borderRadius: "12px",
-                  padding: "12px 16px",
-                  textAlign: "left",
+                  borderRadius: "10px",
+                  padding: "8px",
                   cursor: "pointer",
                   transition: "all 0.2s ease-in-out",
                   color: "#334155",
-                  fontSize: "14px",
-                  fontWeight: 500,
+                  fontSize: "12px",
+                  fontWeight: 600,
                   "&:hover": {
                     borderColor: "#7C4DFF",
                     backgroundColor: "#FAF5FF",
-                    transform: "translateX(4px)",
+                    color: "#7C4DFF",
                   },
                 }}
               >
-                <Box sx={{ color: "#7C4DFF", display: "flex" }}>
-                  <UserIcon size={18} strokeWidth={2} />
-                </Box>
                 Recruiter
               </Box>
 
@@ -426,28 +425,25 @@ export default function LoginComponent() {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "12px",
+                  justifyContent: "center",
+                  gap: "6px",
                   width: "100%",
                   backgroundColor: "#FFFFFF",
                   border: "1px solid #E2E8F0",
-                  borderRadius: "12px",
-                  padding: "12px 16px",
-                  textAlign: "left",
+                  borderRadius: "10px",
+                  padding: "8px",
                   cursor: "pointer",
                   transition: "all 0.2s ease-in-out",
                   color: "#334155",
-                  fontSize: "14px",
-                  fontWeight: 500,
+                  fontSize: "12px",
+                  fontWeight: 600,
                   "&:hover": {
                     borderColor: "#7C4DFF",
                     backgroundColor: "#FAF5FF",
-                    transform: "translateX(4px)",
+                    color: "#7C4DFF",
                   },
                 }}
               >
-                <Box sx={{ color: "#7C4DFF", display: "flex" }}>
-                  <UsersIcon size={18} strokeWidth={2} />
-                </Box>
                 Team Leader
               </Box>
 
@@ -459,28 +455,26 @@ export default function LoginComponent() {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "12px",
+                  justifyContent: "center",
+                  gap: "6px",
                   width: "100%",
                   backgroundColor: "#FFFFFF",
                   border: "1px solid #E2E8F0",
-                  borderRadius: "12px",
-                  padding: "12px 16px",
-                  textAlign: "left",
+                  borderRadius: "10px",
+                  padding: "8px",
+                  gridColumn: "span 2",
                   cursor: "pointer",
                   transition: "all 0.2s ease-in-out",
                   color: "#334155",
-                  fontSize: "14px",
-                  fontWeight: 500,
+                  fontSize: "12px",
+                  fontWeight: 600,
                   "&:hover": {
                     borderColor: "#7C4DFF",
                     backgroundColor: "#FAF5FF",
-                    transform: "translateX(4px)",
+                    color: "#7C4DFF",
                   },
                 }}
               >
-                <Box sx={{ color: "#7C4DFF", display: "flex" }}>
-                  <UserIcon size={18} strokeWidth={2} />
-                </Box>
                 Account Manager
               </Box>
             </Box>
