@@ -49,6 +49,8 @@ export default function Cards({
   return (
 
     <div className={` group relative overflow-hidden bg-gradient-to-r ${style.bgGradient} via-white to-white p-4 rounded-[8px] border border-gray-300 shadow-[0_4px_20px_rgba(0,0,0,0.015)] flex items-start gap-3 transition-all duration-300 hover:scale-[1.02] active:scale-[1.02] cursor-pointer ${style.hover}`}>
+      {/* Top Border Line Hover Highlight */}
+      <div className={`absolute top-0 left-0 right-0 h-[4px] ${style.topBarColor} opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300`} />
       
       {/* Icon size changed to w-12 h-12 and rounded-lg to match target project sizes */}
       <div className={`w-10 h-10 ${style.iconBg} ${style.iconShadow} rounded-lg flex items-center justify-center text-white shrink-0`}>
