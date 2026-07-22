@@ -11,7 +11,11 @@ export const useAuthStore = create((set) => ({
     let name = "Mike Admin";
     let initials = "MA";
 
-    if (email.includes("recruiter")) {
+    if (email.includes("superadmin")) {
+      role = "superadmin";
+      name = "Super Admin";
+      initials = "SA";
+    } else if (email.includes("recruiter")) {
       role = "recruiter";
       name = "Sarah Recruiter";
       initials = "SR";

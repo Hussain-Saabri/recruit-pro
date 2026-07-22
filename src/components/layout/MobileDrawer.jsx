@@ -48,6 +48,7 @@ export default function MobileDrawer({ open, onClose, user, onLogout, navItems }
                   to={item.path}
                   icon={item.icon}
                   title={item.title}
+                  children={item.children}
                   onClick={onClose}
                   mobile={true}
                 />

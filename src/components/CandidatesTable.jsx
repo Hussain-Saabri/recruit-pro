@@ -1,10 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { toast } from "sonner";
-import {
-  useReactTable,
-  getCoreRowModel,
-  flexRender
-} from "@tanstack/react-table";
+import DataTable from "./shared/DataTable";
 import {
   User,
   Briefcase,
@@ -444,13 +440,6 @@ export default function CandidatesTable() {
     []
   );
 
-  // Initialize TanStack react-table
-  const table = useReactTable({
-    data: candidates,
-    columns,
-    getCoreRowModel: getCoreRowModel()
-  });
-
   return (
     <div className="bg-white rounded-lg border border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.01)] overflow-hidden w-full font-sans text-left mt-8">
       {/* Table Header Action Bar */}
@@ -478,37 +467,7 @@ export default function CandidatesTable() {
       </div>
 
       {/* Table Element */}
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse text-sm text-slate-600">
-          <thead>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id} className="bg-slate-50/30 border-b border-gray-100">
-                {headerGroup.headers.map((header) => (
-                  <th
-                    key={header.id}
-                    className="px-4 py-3 font-bold text-gray-900 text-[13px] capitalize tracking-wider"
-                  >
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(header.column.columnDef.header, header.getContext())}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody className="divide-y divide-gray-100">
-            {table.getRowModel().rows.map((row) => (
-              <tr key={row.id} className="hover:bg-slate-50/10 transition-colors duration-150">
-                {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="px-4 py-3 align-top">
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataTable data={candidates} columns={columns} />
 
       {/* Candidate Profile Detail Modal */}
       {selectedCandidate && (
