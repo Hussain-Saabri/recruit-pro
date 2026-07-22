@@ -1,13 +1,28 @@
+<<<<<<< HEAD
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+=======
+
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Toaster } from "sonner";
+import AppRoutes from "./routes/AppRoutes";
+import "./App.css";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: "'Satoshi', system-ui, -apple-system, sans-serif",
+  },
+});
+>>>>>>> feature/cards
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
+<<<<<<< HEAD
     <>
       <section id="center">
         <div className="hero">
@@ -117,6 +132,13 @@ function App() {
       <section id="spacer"></section>
     </>
   )
+=======
+    <ThemeProvider theme={theme}>
+      <Toaster richColors position="top-right" closeButton />
+      <AppRoutes />
+    </ThemeProvider>
+  );
+>>>>>>> feature/cards
 }
 
 export default App
