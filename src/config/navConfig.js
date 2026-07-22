@@ -4,9 +4,19 @@ import {
   Users,
   FileText,
   PlusCircle,
+  Building,
+  Settings
 } from "lucide-react";
 
 export const NAV_ITEMS = {
+  superadmin: [
+    {
+      id: "dashboard",
+      title: "Dashboard",
+      path: "/dashboard",
+      icon: LayoutDashboard,
+    },
+  ],
   admin: [
     {
       id: "dashboard",
@@ -21,10 +31,41 @@ export const NAV_ITEMS = {
       icon: FolderKanban,
     },
     {
-      id: "users",
-      title: "Users",
-      path: "/users",
-      icon: Users,
+      id: "settings",
+      title: "Settings",
+      icon: Settings,
+      children: [
+        {
+          id: "users",
+          title: "Users",
+          path: "/masters/users",
+          icon: Users,
+        },
+        {
+          id: "recruiters",
+          title: "Recruiters",
+          path: "/masters/recruiters",
+          icon: Users,
+        },
+        {
+          id: "clients",
+          title: "Clients",
+          path: "/masters/clients",
+          icon: Building,
+        },
+        {
+          id: "roles",
+          title: "Roles",
+          path: "/masters/roles",
+          icon: FileText,
+        },
+        {
+          id: "permissions",
+          title: "Permission Settings",
+          path: "/masters/permissions",
+          icon: FileText,
+        }
+      ]
     },
   ],
   recruiter: [

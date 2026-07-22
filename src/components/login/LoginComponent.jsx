@@ -4,11 +4,11 @@ import {
   Card,
   Typography,
   OutlinedInput,
-  Button,
   IconButton,
   InputAdornment,
   Fade,
 } from "@mui/material";
+import { Button } from "../ui";
 import {
   RocketIcon,
   EmailIcon,
@@ -41,6 +41,9 @@ export default function LoginComponent() {
     let demoEmail = "";
     let demoPass = "password123";
     switch (role) {
+      case "Super Admin":
+        demoEmail = "superadmin@recruitpro.com";
+        break;
       case "Admin":
         demoEmail = "admin@company.com";
         break;
@@ -274,40 +277,14 @@ export default function LoginComponent() {
 
             {/* Sign In Button */}
             <Button
-              fullWidth
               type="submit"
+              variant="primary"
               disabled={isLoading}
-              sx={{
-                backgroundColor: "#7C4DFF",
-                color: "#FFFFFF",
-                height: "52px",
-                borderRadius: "12px",
-                textTransform: "none",
-                fontWeight: 600,
-                fontSize: "16px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "10px",
-                boxShadow: "0 4px 14px rgba(124, 77, 255, 0.2)",
-                transition: "all 0.2s ease-in-out",
-                marginBottom: "32px",
-                "&:hover": {
-                  backgroundColor: "#6C3BEB",
-                  boxShadow: "0 6px 20px rgba(124, 77, 255, 0.3)",
-                  transform: "translateY(-1px)",
-                },
-                "&:active": {
-                  transform: "translateY(0)",
-                },
-                "&.Mui-disabled": {
-                  backgroundColor: "#E2E8F0",
-                  color: "#94A3B8",
-                },
-              }}
+              isLoading={isLoading}
+              className="w-full h-[52px] rounded-xl text-base font-semibold shadow-md shadow-brand-500/10 hover:shadow-lg hover:shadow-brand-500/20 mb-8"
+              leftIcon={<SignInIcon size={18} strokeWidth={2} />}
             >
-              <SignInIcon size={18} strokeWidth={2} />
-              {isLoading ? "Signing In..." : "Sign In"}
+              Sign In
             </Button>
           </Box>
 
@@ -342,6 +319,39 @@ export default function LoginComponent() {
             </Box>
 
             <Box sx={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {/* Super Admin */}
+              <Box
+                component="button"
+                type="button"
+                onClick={() => handleDemoAccess("Super Admin")}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  width: "100%",
+                  backgroundColor: "#FFFFFF",
+                  border: "1px solid #E2E8F0",
+                  borderRadius: "12px",
+                  padding: "12px 16px",
+                  textAlign: "left",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease-in-out",
+                  color: "#334155",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                  "&:hover": {
+                    borderColor: "#7C4DFF",
+                    backgroundColor: "#FAF5FF",
+                    transform: "translateX(4px)",
+                  },
+                }}
+              >
+                <Box sx={{ color: "#7C4DFF", display: "flex" }}>
+                  <UserIcon size={18} strokeWidth={2} />
+                </Box>
+                Super Admin
+              </Box>
+
               {/* Admin */}
               <Box
                 component="button"
